@@ -90,22 +90,33 @@ function Board() {
   };
 
   return (
-    <DragDropContext onDragEnd={handleOnDragEnd}>
-      <Droppable droppableId="board" direction="horizontal" type="column">
-        {(provided) => (
-          <div
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-            className="grid grid-cols-1 md:grid-cols-3 max-w-7xl mx-auto"
-          >
-            {Array.from(board.columns.entries()).map(([id, column], index) => (
-              <Column key={id} id={id} todos={column.todos} index={index} />
-            ))}
-            {provided.placeholder}
-          </div>
-        )}
-      </Droppable>
-    </DragDropContext>
+    <div className="m-auto flex px-[40px]">
+      <DragDropContext onDragEnd={handleOnDragEnd}>
+        <Droppable droppableId="board" direction="horizontal" type="column">
+          {(provided) => (
+            <div className="mx-auto flex">
+              <div
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+                className="flex"
+              >
+                {Array.from(board.columns.entries()).map(
+                  ([id, column], index) => (
+                    <Column
+                      key={id}
+                      id={id}
+                      todos={column.todos}
+                      index={index}
+                    />
+                  ),
+                )}
+                {provided.placeholder}
+              </div>
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
+    </div>
   );
 }
 

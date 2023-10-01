@@ -45,29 +45,30 @@ function TodoCard({
 
   return (
     <div
-      className="bg-white rounded-md drop-shadow-md mb-2"
+      className="bg-mainBackgroundColor p-2.5 flex flex-col items-center rounded-xl
+                 hover:ring-2 hover:ring-inset hover:ring-rose-500 cursor-grab mb-2 shadow-md"
       {...draggableProps}
       {...dragHandleProps}
       ref={innerRef}
     >
-      <div className="flex justify-between items-center p-5">
-        <p>{todo.title}</p>
+      <div className="flex items-center w-full p-1">
+        <p className="w-[90%]">{todo.title}</p>
         <button
           onClick={() => deleteTask(index, todo, id)}
-          className="text-red-500 hover:text-red-600"
+          className="justify-end"
         >
-          <XCircleIcon className="ml-5 h-8 w-8" />
+          <XCircleIcon className="text-rose-500 ml-5 h-8 w-8 hover:text-rose-600" />
         </button>
       </div>
       {/*{Add imageUrl}*/}
       {imageUrl && (
-        <div className="relative h-full w-full rounded-b-md">
+        <div className="flex h-full w-full mt-2">
           <Image
             src={imageUrl}
             alt={"Task image"}
             width={400}
             height={200}
-            className={"w-full object-contain rounded-b-md"}
+            className={"w-full object-contain rounded-md"}
           />
         </div>
       )}

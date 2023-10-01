@@ -36,14 +36,12 @@ function Column({ id, todos, index }: Props) {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
-          className=""
+          className="w-[300px] h-fit rounded-md
+                      flexflex-col ml-2 mr-2 overflow-x-scroll"
         >
-          <h2
-            className="flex justify-between font-bold text-xl p-2 bg-white/50 mr-5 ml-5 rounded-2xl rounded-b-none
-          shadow-sm border-b-2 border-white/30"
-          >
+          <h2 className="bg-columnBackgroundColor rounded-t-md flex justify-between font-bold text-xl p-2">
             {idToColumnText[id]}
-            <span className="text-gray-500 bg-gray-200 rounded-full px-2 py-1 text-sm font-normal">
+            <span className="text-white bg-sky-500 rounded-full h-7 w-7 px-1 py-1 text-sm text-center font-normal">
               {!searchString
                 ? todos.length
                 : todos.filter((todo) =>
@@ -54,14 +52,13 @@ function Column({ id, todos, index }: Props) {
             </span>
           </h2>
           {/*  render droppable todos in the column*/}
-          <Droppable droppableId={index.toString()} type="card">
-            {(provided) => (
-              <div
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-                className={`mr-5 ml-5 p-2 rounded-2xl rounded-t-none shadow-sm bg-white/50`}
-              >
-                <div className="">
+          <div
+            className="bg-columnBackgroundColor rounded-b-md flex flex-grow flex-col gap-2 p-2
+                            overflow-x-hidden shadow-md"
+          >
+            <Droppable droppableId={index.toString()} type="card">
+              {(provided) => (
+                <div {...provided.droppableProps} ref={provided.innerRef}>
                   {todos.map((todo, index) => {
                     if (
                       searchString &&
@@ -90,18 +87,17 @@ function Column({ id, todos, index }: Props) {
                     );
                   })}
                   {provided.placeholder}
-                  <div className="flex items-end justify-end p-2">
-                    <button
-                      onClick={handleAddTodo}
-                      className="text-green-500 hover:text-green-600"
-                    >
-                      <PlusCircleIcon className="h-10 w-10" />
-                    </button>
-                  </div>
+                  <button
+                    onClick={handleAddTodo}
+                    className="flex gap-2 items-center border-columnBackgroundColor border-2 rounded-md p-4
+                      border-x-columnBackgroundColor hover:text-rose-500 active:text-rose-800"
+                  >
+                    <PlusCircleIcon className="h-10 w-10" />
+                  </button>
                 </div>
-              </div>
-            )}
-          </Droppable>
+              )}
+            </Droppable>
+          </div>
         </div>
       )}
     </Draggable>
