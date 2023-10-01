@@ -32,9 +32,14 @@ const useBoardStore = create<BoardState>((set, get) => ({
   setSearchString: (searchString) => set({ searchString }),
 
   getBoard: async () => {
-    const board = await getTodosGroupedByColumn();
-    set({ board });
+    try {
+      const board = await getTodosGroupedByColumn();
+      set({ board });
+    } catch (error) {
+      alert("Error while fetching data from server, please try again later...");
+    }
   },
+
   setBoardState: (board) => set({ board }),
 
   deleteTask: async (taskIndex: number, todo: Todo, id: TypedColumn) => {
