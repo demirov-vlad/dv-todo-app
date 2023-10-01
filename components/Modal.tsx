@@ -68,12 +68,12 @@ function Modal() {
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel
-                className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left
+                className="w-full max-w-md transform overflow-hidden rounded-2xl bg-mainBackgroundColor p-6 text-left
               align-middle shadow-xl transition-all"
               >
                 <Dialog.Title
                   as="h3"
-                  className="text-lg font-medium leading-6 text-gray-900 pb-2"
+                  className="text-lg font-medium leading-6 text-white pb-2"
                 >
                   Add a task
                 </Dialog.Title>
@@ -84,7 +84,7 @@ function Modal() {
                     value={newTaskInput}
                     onChange={(e) => setNewTaskInput(e.target.value)}
                     placeholder="Enter a task here..."
-                    className="w-full border border-gray-300 rounded-md outline-none p-5"
+                    className="w-full focus:bg-white text-gray-900 border border-gray-300 bg-gray-500 rounded-md outline-none p-5"
                   />
                 </div>
                 {/*Radio group*/}
@@ -96,7 +96,7 @@ function Modal() {
                       imagePickerRef.current?.click();
                     }}
                     className="w-full border border-gray-300 rounded-md outline-none p-5 focus-visible:ring-2
-                  focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                   hover:ring-2 hover:hover:ring-rose-500 active:bg-gray-500"
                   >
                     <PhotoIcon className="h-6 w-6 mr-2 inline-block" />
                     Upload Image
@@ -129,8 +129,8 @@ function Modal() {
                   <button
                     type={"submit"}
                     disabled={!newTaskInput}
-                    className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4
-                  py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2
+                    className="inline-flex justify-center rounded-md border border-transparent bg-rose-500 px-4
+                  py-2 text-sm font-medium text-mainBackgroundColor hover:bg-white focus:outline-none focus-visible:ring-2
                   focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:bg-gray-100 disabled:text-gray-300
                   disabled:cursor-not-allowed"
                   >

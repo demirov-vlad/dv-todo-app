@@ -52,7 +52,7 @@ function TaskTypeRadioGroup() {
                    ${
                      checked
                        ? `${type.color} bg-opacity-75 text-white`
-                       : "bg-white"
+                       : "bg-columnBackgroundColor"
                    }
                       relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
                 }
@@ -65,7 +65,7 @@ function TaskTypeRadioGroup() {
                           <RadioGroup.Label
                             as="p"
                             className={`font-medium ${
-                              checked ? "text-white" : "text-gray-900"
+                              checked ? "text-white" : "text-white"
                             }`}
                           >
                             {type.name}
